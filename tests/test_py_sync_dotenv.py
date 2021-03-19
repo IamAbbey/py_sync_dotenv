@@ -5,7 +5,7 @@ import emoji
 import pytest
 from click.testing import CliRunner
 
-from py_sync_dotenv.cli import main, formatting_engine
+from py_sync_dotenv.cli import formatting_engine, main
 
 test_env = """
 PRODUCTION=1
