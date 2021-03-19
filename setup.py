@@ -47,6 +47,7 @@ setup(
     name="py_sync_dotenv",
     packages=find_packages(include=["py_sync_dotenv", "py_sync_dotenv.*"]),
     setup_requires=setup_requirements,
+    long_description_content_type="text/x-rst",
     test_suite="tests",
     tests_require=test_requirements,
     url="https://github.com/IamAbbey/py_sync_dotenv",
