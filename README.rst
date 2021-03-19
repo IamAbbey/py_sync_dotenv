@@ -1,11 +1,11 @@
 Python Sync Dotenv ♻️
 =====================
 
-.. image:: https://img.shields.io/pypi/v/py\_sync\_dotenv.svg :target: https://pypi.python.org/pypi/py\_sync\_dotenv
+.. image:: https://img.shields.io/pypi/pyversions/py-sync-dotenv?style=plastic :target: https://pypi.python.org/pypi/py-sync-dotenv
 
-.. image:: https://img.shields.io/travis/IamAbbey/py\_sync\_dotenv.svg :target: https://travis-ci.com/IamAbbey/py\_sync\_dotenv
+.. image:: https://img.shields.io/travis/com/IamAbbey/py_sync_dotenv?style=plastic :target: https://travis-ci.com/github/IamAbbey/py\_sync\_dotenv
 
-.. image:: https://readthedocs.org/projects/py-sync-dotenv/badge/?version=latest :target: https://py-sync-dotenv.readthedocs.io/en/latest/?version=latest :alt: Documentation Status
+.. image:: https://img.shields.io/readthedocs/py-sync-dotenv/latest?style=plastic :target: https://py-sync-dotenv.readthedocs.io/en/latest/ :alt: Documentation Status
 
 
 
