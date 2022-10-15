@@ -23,14 +23,12 @@ test_requirements = [
 setup(
     author="Sotunde Abiodun Oladimeji",
     author_email="sotundeabiodun00@gmail.com",
-    python_requires=">=3.6",
+    python_requires=">=3.8",
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",
         "Natural Language :: English",
-        "Programming Language :: Python :: 3.6",
-        "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
     ],
     description="Python Sync Dotenv is a Python package for synchronizing .env files  across projects.",
