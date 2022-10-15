@@ -1,11 +1,11 @@
 import glob
 import os
 
-import emoji
 import pytest
 from click.testing import CliRunner
 
-from py_sync_dotenv.cli import formatting_engine, main
+from py_sync_dotenv.cli import just_variable_formatting, main
+
 
 test_env = """
 PRODUCTION=1
@@ -48,15 +48,15 @@ def test_standard_sync(source, dev_env, dev_envs, just_variables):
         result = runner.invoke(main, args=args)
         assert not result.exception
         assert result.output == (
-            f"{emoji.emojize(':loudspeaker: Synchronizing your .env file(s) :loudspeaker:')}"
-            + f"\n{emoji.emojize(':fire: Synchronizing Complete :fire:', use_aliases=True)}\n"
+            f"Synchronizing your .env file(s) 🍰"
+            + f"\n✨ Synchronizing Complete ✨\n"
         )
 
         if dev_env:
             with open(f"{dev_env.split(' ')[1]}", "r") as f:
                 output = f.read()
                 if just_variables:
-                    assert output == "\n".join(formatting_engine(test_env.split("\n")))
+                    assert output == "\n".join(just_variable_formatting(test_env.split("\n")))
                 else:
                     assert output == test_env
 
@@ -68,7 +68,7 @@ def test_standard_sync(source, dev_env, dev_envs, just_variables):
                     output = f.read()
                     if just_variables:
                         assert output == "\n".join(
-                            formatting_engine(test_env.split("\n"))
+                            just_variable_formatting(test_env.split("\n"))
                         )
                     else:
                         assert output == test_env

@@ -5,12 +5,11 @@ import re
 import time
 
 import click
-import emoji
 from watchdog.events import PatternMatchingEventHandler
 from watchdog.observers import Observer
 
 
-def formatting_engine(lines_list):
+def just_variable_formatting(lines_list):
     computed_list = [re.sub(r"=.*", "=", line) for line in lines_list]
     return computed_list
 
@@ -26,7 +25,7 @@ def sync_dot_env(
 
     with open(f"{source}", "r") as f:
         lines_list = f.readlines()
-        computed_list = formatting_engine(lines_list)
+        computed_list = just_variable_formatting(lines_list)
 
     if destination_envs is not None:
         for filename in glob.glob(
@@ -88,36 +87,17 @@ def main(
     """This script synchronizes .env files."""
 
     if context.invoked_subcommand is None:
-        click.echo(
-            emoji.emojize(
-                ":loudspeaker: "
-                + click.style(
-                    "Synchronizing your .env file(s)",
-                    bold=True,
-                )
-                + " :loudspeaker:"
-            )
-        )
+        click.echo("Synchronizing your .env file(s) 🍰")
         sync_dot_env(
             source=source,
             destination_env=destination_env,
             destination_envs=destination_envs,
             just_variables=just_variables,
         )
-        click.echo(
-            emoji.emojize(":fire: Synchronizing Complete :fire:", use_aliases=True)
-        )
+        click.echo("✨ Synchronizing Complete ✨")
+        
     else:
-        click.echo(
-            emoji.emojize(
-                ":eye: "
-                + click.style(
-                    "Watching for source .env file changes",
-                    bold=True,
-                )
-                + " :eye:"
-            )
-        )
+        click.echo("Watching for source .env file changes 🍰")
         click.echo("Quit the watch with CONTROL-C.")
         context.ensure_object(dict)
         context.obj["source"] = source
@@ -128,7 +108,7 @@ def main(
 
 def watch_sync_dot_env(**kwargs):
     sync_dot_env(**kwargs)
-    click.echo(emoji.emojize(":fire: .env file(s) updated :fire:", use_aliases=True))
+    click.echo("✨ .env file(s) updated ✨")
 
 
 @main.command()
@@ -153,7 +133,7 @@ def watch(context, show_logs):
         case_sensitive=False,
         ignore_patterns=None,
     )
-    event_handler.on_modified = lambda event: watch_sync_dot_env(**context.obj)
+    event_handler.on_modified = lambda _: watch_sync_dot_env(**context.obj)
     observer = Observer()
     observer.schedule(event_handler, src_path)
     observer.start()
